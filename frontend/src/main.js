@@ -10,7 +10,7 @@ import Chart from "./components/Chart.vue";
 const routes = [
   { path: "/", redirect: "/login" },
   { path: "/home", component: Home },
-  { path: "/login", component: Chart },
+  { path: "/login", component: Login },
 ];
 
 const router = createRouter({
