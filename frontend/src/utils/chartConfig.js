@@ -22,13 +22,26 @@ ChartJS.register(
   Filler
 );
 
+const xScalePadding = {
+  id: "xScalePadding",
+  beforeDatasetsDraw(chart, args, pluginOptions) {
+    const {
+      ctx,
+      data,
+      scales: { x, y },
+    } = chart;
+
+    console.log(x);
+  },
+};
+
 export const data = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  labels: ["June", "July", "August", "September", "October", "November"],
   datasets: [
     {
       label: "",
       backgroundColor: "#ebf1fd",
-      data: [40, 39, 10, 40, 39, 80, 40],
+      data: [635000, 820000, 750000, 850000, 960000, 1680000],
       borderColor: "#1751D0",
       borderWidth: 1.5,
       pointRadius: 0,

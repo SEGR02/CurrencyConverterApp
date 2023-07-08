@@ -1,67 +1,27 @@
 <script setup>
 import Logo from "../assets/img/Logo.png";
-import { ref, watch } from "vue";
-import { useRouter } from "vue-router";
-import axios from "axios";
-
-// const state = useCounterStore();
-const router = useRouter();
-const email = ref("");
-const password = ref("");
-
-const submit = () => {
-  try {
-    const credentials = {
-      email: email.value,
-      password: password.value,
-    };
-    axios
-      .post(`http://localhost:8000/api/v1/login`, credentials, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        console.log("user logged");
-        router.push("/home");
-      })
-      .finally(() => dispatch(setIsLoading(false)))
-      .catch((error) => alert(error.response.data.message));
-    // dispatch(loginUser(credentials));
-  } catch (error) {
-    alert(error);
-  }
-};
+import LogoMobile from "../assets/img/LogoMobile.png";
+import FormLogin from "./FormLogin.vue";
 </script>
 
 <template>
   <div class="container">
     <div class="loginForm">
-      <img :src="Logo" alt="logo" />
+      <div class="logoContainer">
+        <img class="logo" :src="Logo" alt="logo" />
+        <img class="logo-mobile" :src="LogoMobile" alt="logo" />
+      </div>
       <div class="form">
         <h1>Login to account</h1>
-        <p>Enter your credentials to access your account</p>
-        <form @submit.prevent="submit">
-          <div>
-            <input placeholder="Enter email" type="text" v-model="email" />
-            <input
-              placeholder="Enter password"
-              type="password"
-              v-model="password"
-            />
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" name="checkbox" id="checkbox" />
-            <label for="checkbox">Remember machine for 30 days</label>
-          </div>
-          <div>
-            <button>Login</button>
-          </div>
-        </form>
+        <p style="text-align: center">
+          Enter your credentials to access your
+          <br class="br-mobile" />account
+        </p>
+        <FormLogin />
       </div>
       <div class="footer">
         <p class="p-footer">©2023 example</p>
-        <p>Privacy Policy</p>
+        <p class="p-footer">Privacy Policy</p>
       </div>
     </div>
     <div class="backgroundLogin"></div>
@@ -118,37 +78,10 @@ label {
   padding-left: 10px;
   font-weight: 500;
 }
-.checkbox {
-  height: 2vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: 2px;
-}
-input[type="checkbox"] {
-  border: 1px solid red;
-}
-button {
-  background-color: #1751d0;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 48%;
-  color: #fff;
-  margin-top: 20px;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-form {
-  width: 25vw;
-  margin-right: 18px;
-}
 .footer {
   width: 50vw;
   height: 10vh;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   display: flex;
   justify-content: space-around;
@@ -157,5 +90,74 @@ form {
 .p-footer {
   color: #4f4d55;
   font-size: 14px;
+}
+
+.logo-mobile {
+  display: none;
+}
+
+.br-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .backgroundLogin {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  .loginForm {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .footer {
+    width: 100vw;
+    height: 10vh;
+  }
+
+  .logo {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .br-mobile {
+    display: block;
+  }
+  .logo {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: inline;
+  }
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+  }
+  .logoContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  p,
+  label,
+  .p-footer {
+    font-size: 12px;
+  }
+
+  button {
+    padding: 8px 46%;
+  }
 }
 </style>

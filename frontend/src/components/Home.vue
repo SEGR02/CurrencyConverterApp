@@ -1,87 +1,25 @@
-<script>
-import FlagArg from "../assets/img/FlagArg.png";
-import FlagUS from "../assets/img/FlagUS.png";
-import Arrow from "../assets/img/arrow.png";
-import Button from "../assets/img/button.svg";
-import { Line } from "vue-chartjs";
-import * as chartConfig from "../utils/chartConfig";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-export default {
-  name: "App",
-  components: {
-    Line,
-  },
-  data() {
-    return {
-      chartConfig,
-      FlagArg,
-      FlagUS,
-      Arrow,
-      Button,
-    };
-  },
-};
+<script setup>
+import Chart from "./Chart.vue";
 </script>
 
 <template>
   <div class="container">
     <div class="sub-container">
       <p class="p-header">FAST MONEY</p>
-      <h1 style="font-size: 72px">Currency Converter</h1>
-      <p style="color: #4f4d55; font-size: 16px">
-        Convert popular currencies from around the world with updated
-        exchanges<br />
-        <center>rates using our calculator</center>
+      <h1>Currency Converter</h1>
+      <p class="p-desktop">
+        Convert popular currencies from around the world with updated exchanges
+        <br />rates using our calculator
       </p>
-      <div class="chart-container">
-        <div class="convert-options">
-          <div class="fiatToChange">
-            <p>From</p>
-            <img :src="FlagArg" alt="arg" />
-          </div>
-          <div><img :src="Button" /></div>
-          <div>
-            <p>To</p>
-            <img :src="FlagUS" alt="us" />
-          </div>
-        </div>
-        <div>
-          <p style="margin: 0">From Argentine Peso to US Dollar</p>
-          <div class="exchange-rate">
-            <p style="margin: 0">$58,345,190</p>
-            <img
-              style="margin-bottom: 3px; margin-left: 3px"
-              :src="Arrow"
-              alt=""
-            />
-            <p class="p-rate">+4.11%</p>
-          </div>
-        </div>
-        <Line :data="chartConfig.data" :options="chartConfig.options" />
-      </div>
-      <p>
-        Currency calculation tools use reference exchange rates obtained from
-        major market data sources
+      <p class="p-mobile">
+        Convert popular currencies from around the <br />
+        world with updated exchangesrates using our <br />
+        calculator
+      </p>
+      <Chart />
+      <p class="p-footer">
+        Currency calculation tools use reference exchange
+        <br />rates obtained from major market data sources
       </p>
     </div>
   </div>
@@ -102,11 +40,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 6px;
 }
 .chart-container {
-  height: 340px;
+  height: 47.5%;
   width: 60%;
-  padding: 32px;
+  padding: 20px;
   margin-bottom: 24px;
   background-color: #fff;
   border-radius: 6px;
@@ -120,35 +59,76 @@ export default {
 }
 h1 {
   margin: 0;
-  /* margin-top: -10px; */
+  font-size: 72px;
 }
-.convert-options {
-  display: flex;
-  justify-content: space-between;
-}
-canvas {
-  max-height: 200px;
+.p-footer {
+  margin: 0;
+  text-align: center;
 }
 
-.convert-options div p {
-  margin: 0;
+.p-mobile {
+  display: none;
+  color: #4f4d55;
+  text-align: center;
 }
 
-img {
-  height: 30px;
-  width: 30px;
+.p-desktop {
+  color: #4f4d55;
+  text-align: center;
 }
-.fiatToChange {
-  margin-left: 3px;
+@media screen and (max-width: 820px) {
+  .chart-container {
+    width: 47.5%;
+    height: 55%;
+  }
 }
-.exchange-rate {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+@media screen and (max-width: 750px) {
+  h1 {
+    font-size: 36px;
+  }
+  .p-desktop {
+    display: none;
+  }
+  .p-mobile {
+    display: initial;
+  }
 }
-.p-rate {
-  color: #52a86e;
-  font-size: 12px;
-  margin: 0;
+@media screen and (max-width: 690px) {
+  .chart-container {
+    width: 52.5%;
+  }
+}
+
+@media screen and (max-width: 545px) {
+  .chart-container {
+    height: 60%;
+    width: 80%;
+  }
+  .chart-container {
+    height: 58%;
+  }
+  .fiat-description,
+  .p-footer,
+  .p-mobile {
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 385px) {
+  .sub-container {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .p-footer,
+  .p-mobile {
+    font-size: 11px;
+  }
+  h1 {
+    font-size: 26px;
+  }
 }
 </style>
