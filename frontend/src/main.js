@@ -12,8 +12,9 @@ const routes = [
   { path: "/login", component: Login },
 ];
 
-const router = createRouter({
-  history: createWebHistory(),
+const router = new VueRouter({
+  mode: "",
+  base: "https://main--ornate-faloodeh-e23110.netlify.app",
   routes,
 });
 
