@@ -34,24 +34,18 @@ const result = ref("");
 const rate = ref("");
 const token = localStorage.getItem("token");
 
-watch(currenciesRef, async (newValue) => {
-  try {
-    axios
-      .post(`https://currencyconverterapp.up.railway.app/api/v1/exchange`, {
-        token,
-      })
-      .then((res) => {
-        console.log(res.data);
-        currenciesRef.value = res.data;
-        rate.value = res.data.rates.ARS;
-      })
-      .catch((error) =>
-        alert("u must logged or token expired " + error.message)
-      );
-  } catch (error) {
-    console.error(error);
-  }
-});
+setTimeout(() => {
+  axios
+    .post(`https://currencyconverterapp.up.railway.app/api/v1/exchange`, {
+      token,
+    })
+    .then((res) => {
+      console.log(res.data);
+      currenciesRef.value = res.data;
+      rate.value = res.data.rates.ARS;
+    })
+    .catch((error) => alert("u must logged or token expired " + error.message));
+}, 3000);
 
 export default {
   name: "Chart",
