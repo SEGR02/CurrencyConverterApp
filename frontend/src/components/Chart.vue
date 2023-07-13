@@ -1,5 +1,5 @@
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import FlagArg from "../assets/img/FlagArg.svg";
 import FlagUS from "../assets/img/FlagUS.svg";
 import Arrow from "../assets/img/arrow.svg";
@@ -8,7 +8,6 @@ import DeployArrow from "../assets/img/deploy.svg";
 import { Line } from "vue-chartjs";
 import * as chartConfig from "../utils/chartConfig";
 import axios from "axios";
-import { onMounted } from "vue";
 import {
   Chart as ChartJS,
   CategoryScale,
