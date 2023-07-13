@@ -8,6 +8,7 @@ import DeployArrow from "../assets/img/deploy.svg";
 import { Line } from "vue-chartjs";
 import * as chartConfig from "../utils/chartConfig";
 import axios from "axios";
+import { onMounted } from "vue";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -34,7 +35,7 @@ const result = ref("");
 const rate = ref("");
 const token = localStorage.getItem("token");
 
-setTimeout(() => {
+onMounted(() => {
   axios
     .post(`http://localhost:8000/api/v1/exchange/`, { token })
     .then((res) => {
@@ -43,7 +44,7 @@ setTimeout(() => {
       rate.value = res.data.rates.ARS;
     })
     .catch((error) => alert("u must logged or token expired " + error.message));
-}, 5000);
+});
 
 export default {
   name: "Chart",
