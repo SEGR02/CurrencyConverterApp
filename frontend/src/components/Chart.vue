@@ -34,16 +34,16 @@ const result = ref("");
 const rate = ref("");
 const token = localStorage.getItem("token");
 
-// setTimeout(() => {
-axios
-  .post(`http://localhost:8000/api/v1/exchange/`, { token })
-  .then((res) => {
-    console.log(res.data);
-    currenciesRef.value = res.data;
-    rate.value = res.data.rates.ARS;
-  })
-  .catch((error) => alert("u must logged or token expired " + error.message));
-// }, 1250);
+setTimeout(() => {
+  axios
+    .post(`http://localhost:8000/api/v1/exchange/`, { token })
+    .then((res) => {
+      console.log(res.data);
+      currenciesRef.value = res.data;
+      rate.value = res.data.rates.ARS;
+    })
+    .catch((error) => alert("u must logged or token expired " + error.message));
+}, 5000);
 
 export default {
   name: "Chart",
