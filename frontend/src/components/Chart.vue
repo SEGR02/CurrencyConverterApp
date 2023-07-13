@@ -49,7 +49,10 @@ const resultAPI = async () => {
 
 export default {
   mounted() {
-    resultAPI();
+    // Ejemplo con función anónima
+    setTimeout(function () {
+      resultAPI();
+    }, 1650);
   },
   name: "Chart",
   components: {
