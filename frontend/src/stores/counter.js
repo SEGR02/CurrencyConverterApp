@@ -3,11 +3,11 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useCounterStore = defineStore("counter", () => {
-  const count = ref([]); // Inicializar count como un array vacío
-  const doubleCount = computed(() => count.value.length * 2); // Usar length en lugar de value directamente
+  const count = ref([]);
+  const doubleCount = computed(() => count.value.length * 2);
 
   function increment() {
-    count.value.push({}); // Ejemplo de incrementar la cantidad de currencies
+    count.value.push({});
   }
 
   axios
@@ -18,5 +18,5 @@ export const useCounterStore = defineStore("counter", () => {
     })
     .catch((error) => alert(error.response.data.message));
 
-  return { count, doubleCount, increment, currencies: count }; // Retornar count directamente
+  return { count, doubleCount, increment, currencies: count };
 });
