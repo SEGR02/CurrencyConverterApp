@@ -33,6 +33,7 @@ const currenciesRef = ref(0);
 const result = ref("");
 const rate = ref("");
 const token = localStorage.getItem("token");
+console.log(token);
 
 const resultAPI = async () => {
   axios
