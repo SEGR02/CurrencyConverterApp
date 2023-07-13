@@ -46,7 +46,7 @@ setTimeout(() => {
       rate.value = res.data.rates.ARS;
     })
     .catch((error) => alert("u must logged or token expired " + error.message));
-}, 1250);
+}, 1650);
 
 export default {
   name: "Chart",
