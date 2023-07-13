@@ -26,7 +26,7 @@ const submit = () => {
       localStorage.setItem("token", res.data.token);
       setTimeout(() => {
         router.push("/home");
-      }, 3000);
+      }, 1500);
     })
     .catch((error) => console.log(error.response.data.message));
 };
