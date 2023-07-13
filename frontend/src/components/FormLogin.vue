@@ -13,11 +13,15 @@ const submit = () => {
     password: password.value,
   };
   axios
-    .post(`http://localhost:8000/api/v1/auth/login`, credentials, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    .post(
+      `https://currencyconverterapp.up.railway.app/api/v1/auth/login`,
+      credentials,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
     .then((res) => {
       router.push("/home");
       localStorage.setItem("token", res.data.token);
