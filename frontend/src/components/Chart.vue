@@ -37,7 +37,9 @@ const token = localStorage.getItem("token");
 
 onMounted(() => {
   axios
-    .post(`http://localhost:8000/api/v1/exchange/`, { token })
+    .post(`https://currencyconverterapp.up.railway.app/api/v1/exchange`, {
+      token,
+    })
     .then((res) => {
       console.log(res.data);
       currenciesRef.value = res.data;
