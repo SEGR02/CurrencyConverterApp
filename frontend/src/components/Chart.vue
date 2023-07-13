@@ -50,7 +50,7 @@ const resultAPI = async () => {
 export default {
   mounted() {
     // Ejemplo con función anónima
-    setTimeout(function () {
+    setTimeout(async () => {
       resultAPI();
     }, 1650);
   },
