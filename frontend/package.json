@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "vue-cli-service build && node server.js"
+    "start": "node main.js"
   },
   "dependencies": {
     "axios": "^1.4.0",
