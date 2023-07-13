@@ -1,5 +1,5 @@
 <script>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import FlagArg from "../assets/img/FlagArg.svg";
 import FlagUS from "../assets/img/FlagUS.svg";
 import Arrow from "../assets/img/arrow.svg";
@@ -35,7 +35,7 @@ const rate = ref("");
 const token = localStorage.getItem("token");
 
 const resultAPI = async () => {
-  await axios
+  axios
     .post(`https://currencyconverterapp.up.railway.app/api/v1/exchange`, {
       token,
     })
@@ -48,6 +48,9 @@ const resultAPI = async () => {
 };
 
 export default {
+  mounted() {
+    resultAPI();
+  },
   name: "Chart",
   components: {
     Line,
