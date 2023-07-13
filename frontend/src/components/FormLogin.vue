@@ -23,8 +23,10 @@ const submit = () => {
       }
     )
     .then((res) => {
-      router.push("/home");
       localStorage.setItem("token", res.data.token);
+      setTimeout(() => {
+        router.push("/home");
+      }, 3000);
     })
     .catch((error) => console.log(error.response.data.message));
 };
