@@ -34,8 +34,8 @@ const result = ref("");
 const rate = ref("");
 const token = localStorage.getItem("token");
 
-setTimeout(() => {
-  axios
+const resultAPI = async () => {
+  await axios
     .post(`https://currencyconverterapp.up.railway.app/api/v1/exchange`, {
       token,
     })
@@ -45,7 +45,7 @@ setTimeout(() => {
       rate.value = res.data.rates.ARS;
     })
     .catch((error) => alert("u must logged or token expired " + error.message));
-}, 3000);
+};
 
 export default {
   name: "Chart",
