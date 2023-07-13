@@ -301,10 +301,6 @@ h1 {
   text-align: end;
 }
 
-.flagUS {
-  width: 41.35%;
-}
-
 @media screen and (max-width: 950px) {
   .inputFTC,
   .inputFC {
