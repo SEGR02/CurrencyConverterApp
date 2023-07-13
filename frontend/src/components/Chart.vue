@@ -32,10 +32,11 @@ ChartJS.register(
 const currenciesRef = ref(0);
 const result = ref("");
 const rate = ref("");
-const token = localStorage.getItem("token");
-console.log(token);
 
 const resultAPI = async () => {
+  const token = await localStorage.getItem("token");
+  console.log(token);
+
   axios
     .post(`https://currencyconverterapp.up.railway.app/api/v1/exchange`, {
       token,
