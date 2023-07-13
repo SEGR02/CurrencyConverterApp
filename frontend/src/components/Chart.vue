@@ -52,7 +52,7 @@ export default {
     // Ejemplo con función anónima
     setTimeout(async () => {
       resultAPI();
-    }, 1650);
+    }, 4000);
   },
   name: "Chart",
   components: {
